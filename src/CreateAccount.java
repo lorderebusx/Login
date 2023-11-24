@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AccountsThingy {
+public class CreateAccount {
 
     private static String userUsername;
     private static String userPassword;
@@ -63,7 +63,8 @@ public class AccountsThingy {
         input.close();
                 
     }
-    
+   
+    /*
     public static void loginUser() throws FileNotFoundException 
     {
         try(Scanner input = new Scanner(System.in);)
@@ -94,6 +95,7 @@ public class AccountsThingy {
             System.out.println("Wrong Username or Password");
         }
     }
+    */
     
     public static void main(String[] args) throws IOException{
         
