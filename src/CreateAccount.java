@@ -64,7 +64,7 @@ public class CreateAccount {
                 
     }
    
-    /*
+    
     public static void loginUser() throws FileNotFoundException 
     {
         try(Scanner input = new Scanner(System.in);)
@@ -95,7 +95,7 @@ public class CreateAccount {
             System.out.println("Wrong Username or Password");
         }
     }
-    */
+    
     
     public static void main(String[] args) throws IOException{
         
