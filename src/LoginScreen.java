@@ -227,8 +227,6 @@ public class LoginScreen extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
-        
-        
         Login loggingIn = new Login();
         String username = usernameField.getText();
         String password = passwordField.getText();

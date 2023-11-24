@@ -6,63 +6,33 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class CreateAccount {
+    
+    public static boolean userCreatingFinalize;
 
     private static String userUsername;
     private static String userPassword;
 
-    public static void creatingUser() throws FileNotFoundException, IOException 
-    {
-        Scanner input = new Scanner(System.in);
+    public static void creatingUser(String username, String password) throws FileNotFoundException, IOException 
+    {      
+        String filePath = "C:\\Users\\shubh\\OneDrive\\Desktop\\NetBeansJava\\Login System\\Accounts\\";
 
-        System.out.println("Enter your username: ");
-        String username = input.nextLine();
-
-        System.out.println("Enter your password: ");
-        String password = input.nextLine();
-
-        File account = new File(username + ".txt");
+        File account = new File(filePath + username + ".txt");
                 
         try (FileOutputStream oFile = new FileOutputStream(account, false)) {}
-
-        FileWriter myWriter = new FileWriter(username + ".txt");
-        myWriter.write(username + "\n");
-        myWriter.write(password);
-        myWriter.close();
-
-        newLoginUser(username);
-
-        input.close();
-    }
-
-    public static void newLoginUser(String username) throws FileNotFoundException
-    {
-        Scanner scan = new Scanner(new File(username + ".txt"));
-        Scanner input = new Scanner(System.in);
         
-        while(scan.hasNextLine())
-        {
-            userUsername = scan.nextLine();
-            userPassword = scan.nextLine();
+        if (account.exists()) {
+            FileWriter myWriter = new FileWriter(filePath + username + ".txt");
+            myWriter.write(username + "\n");
+            myWriter.write(password);
+            myWriter.close();
+        
+            userCreatingFinalize = true;
         }
-
-        System.out.print("Username: ");
-        String inputUser = input.nextLine();
-
-        System.out.print("Password: ");
-        String inputPassword = input.nextLine();
-
-        if (inputUser.equals(userUsername) && inputPassword.equals(userPassword))
-        {
-            System.out.println("Login Successful!");
+        else {
+            userCreatingFinalize = false;
         }
-        else
-        {
-            System.out.println("Wrong username or password.");
-        }
-
-        input.close();
-                
     }
+
    
     
     public static void loginUser() throws FileNotFoundException 
@@ -96,7 +66,7 @@ public class CreateAccount {
         }
     }
     
-    
+    /*
     public static void main(String[] args) throws IOException{
         
         Scanner scanning = new Scanner(System.in);
@@ -127,6 +97,7 @@ public class CreateAccount {
         scanning.close();
         
     }
+*/
 
 }
 

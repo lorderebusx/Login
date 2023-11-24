@@ -17,8 +17,8 @@ public class Login {
     {
         try(Scanner input = new Scanner(System.in);)
         {
-            
-            Scanner scan = new Scanner(new File(username + ".txt"));
+            String filePath = "C:\\Users\\shubh\\OneDrive\\Desktop\\NetBeansJava\\Login System\\Accounts\\";
+            Scanner scan = new Scanner(new File(filePath + username + ".txt"));
         
             while(scan.hasNextLine())
             {
