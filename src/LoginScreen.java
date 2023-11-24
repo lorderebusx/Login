@@ -1,4 +1,6 @@
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +21,11 @@ public class LoginScreen extends javax.swing.JFrame {
      */
     public LoginScreen() {
         initComponents();
+    }
+    
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 
     /**
@@ -50,7 +57,7 @@ public class LoginScreen extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         signUpButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(848, 587));
         setPreferredSize(new java.awt.Dimension(848, 587));
 
@@ -244,8 +251,9 @@ public class LoginScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Signing up.");
+        close();
+        CreateAccountClass cAccount = new CreateAccountClass();
+        cAccount.setVisible(true);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     public static void main(String args[]) {
