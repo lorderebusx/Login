@@ -15,20 +15,22 @@ public class CreateAccount {
     public static void creatingUser(String username, String password) throws FileNotFoundException, IOException 
     {      
         String filePath = "C:\\Users\\shubh\\OneDrive\\Desktop\\NetBeansJava\\Login System\\Accounts\\";
-
-        File account = new File(filePath + username + ".txt");
-                
-        try (FileOutputStream oFile = new FileOutputStream(account, false)) {}
         
-        if (account.exists()) {
+        File account = new File(filePath + username + ".txt");
+        
+        if (!account.exists()) {
+            account.createNewFile();
             FileWriter myWriter = new FileWriter(filePath + username + ".txt");
             myWriter.write(username + "\n");
             myWriter.write(password);
             myWriter.close();
         
+            System.out.println("File has been created");
+            
             userCreatingFinalize = true;
         }
         else {
+            System.out.println("File has same name");
             userCreatingFinalize = false;
         }
     }
