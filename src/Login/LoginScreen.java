@@ -1,4 +1,7 @@
+package Login;
 
+
+import CreateAccount.CreateAccountClass;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
@@ -42,7 +45,6 @@ public class LoginScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(848, 587));
-        setPreferredSize(new java.awt.Dimension(848, 587));
 
         jPanel3.setBackground(new java.awt.Color(37, 12, 2));
 

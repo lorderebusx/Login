@@ -1,4 +1,7 @@
+package CreateAccount;
 
+
+import Login.LoginScreen;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -26,7 +29,6 @@ public class CreateAccountClass extends javax.swing.JFrame {
         usernameField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         signUpButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
@@ -37,7 +39,6 @@ public class CreateAccountClass extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(848, 587));
-        setPreferredSize(new java.awt.Dimension(848, 587));
 
         jPanel1.setBackground(new java.awt.Color(37, 12, 2));
 
@@ -97,20 +98,6 @@ public class CreateAccountClass extends javax.swing.JFrame {
         jLabel1.setText("Create Account");
         jPanel4.add(jLabel1);
 
-        jPanel3.setBackground(new java.awt.Color(37, 12, 2));
-        jPanel3.setPreferredSize(new java.awt.Dimension(874, 84));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 84, Short.MAX_VALUE)
-        );
-
         jPanel8.setBackground(new java.awt.Color(37, 12, 2));
 
         signUpButton.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
@@ -149,6 +136,7 @@ public class CreateAccountClass extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(37, 12, 2));
 
         creationLabel.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
+        creationLabel.setForeground(new java.awt.Color(255, 255, 255));
         jPanel10.add(creationLabel);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -163,22 +151,19 @@ public class CreateAccountClass extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 874, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
+            .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addGap(35, 35, 35)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,13 +206,24 @@ public class CreateAccountClass extends javax.swing.JFrame {
         String username = usernameField.getText();
         String password = passwordField.getText();
         try {
-            createAcc.creatingUser(username, password);
-            if(CreateAccount.userCreatingFinalize == true){
-                creationLabel.setText("Your account has been created.");
+            
+            if (usernameField.getText().isEmpty() || passwordField.getText().isEmpty()) {
+                CreateAccount.userCreatingFinalize = false;
+                
+                if (CreateAccount.userCreatingFinalize == false) {
+                    creationLabel.setText("Username or password field is empty.");
+                }
             }
-            else{
-                creationLabel.setText("An account with that username already exists.");
+            else {
+                createAcc.creatingUser(username, password);
+                if(CreateAccount.userCreatingFinalize == true){
+                    creationLabel.setText("Your account has been created.");
+                }
+                else {
+                    creationLabel.setText("An account with that username already exists.");
+                }
             }
+            
         } catch (IOException ex) {
             //Logger.getLogger(CreateAccountClass.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("An exception has occured.");
@@ -284,7 +280,6 @@ public class CreateAccountClass extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
